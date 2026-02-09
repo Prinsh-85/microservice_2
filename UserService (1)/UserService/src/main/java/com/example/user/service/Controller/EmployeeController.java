@@ -34,5 +34,9 @@ public class EmployeeController {
         return ResponseEntity.ok(service.getAll());
     }
 
-
+    //update
+    @PutMapping("/{id}")
+    public ResponseEntity<Employee> update(@PathVariable String id, @RequestBody Employee employee){
+        return ResponseEntity.ok(service.update(id, employee));
+    }
 }
