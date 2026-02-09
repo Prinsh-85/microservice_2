@@ -8,6 +8,8 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
 import java.util.List;
+import java.util.Optional;
+
 @Service
 public class EmployeeServiceImpl implements EmployeeService {
 
@@ -22,7 +24,9 @@ public class EmployeeServiceImpl implements EmployeeService {
 
     @Override
     public Employee getById(String id) {
-        return repository.findById(id).orElseThrow(()-> new RuntimeException("Employee not found with id " + id));
+        Optional<Employee> abc = Optional.of(repository.findById(id).orElseThrow(() -> new RuntimeException("Employee not found with id " + id)));
+        System.out.println(abc);
+        return abc.get();
     }
 
     @Override
