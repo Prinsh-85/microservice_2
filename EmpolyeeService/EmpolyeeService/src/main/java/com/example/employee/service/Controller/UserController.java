@@ -2,6 +2,7 @@ package com.example.employee.service.Controller;
 
 import com.example.employee.service.Entity.User;
 import com.example.employee.service.service.UserService;
+import org.apache.coyote.Response;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
@@ -33,6 +34,15 @@ public class UserController {
     @GetMapping
     public ResponseEntity<List<User>> getAllUsers() {
         return ResponseEntity.ok(service.getAllUsers());
+    }
+
+    //update
+    @PutMapping("/{id}")
+    public ResponseEntity<User> upadteUser(@PathVariable String id, @RequestBody User user){
+        User updated = service.updateUser(id, user);
+        return ResponseEntity.ok(updated);
+
+
     }
 
 }
