@@ -5,10 +5,7 @@ import com.example.user.service.service.EmployeeService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
-import org.springframework.web.bind.annotation.PostMapping;
-import org.springframework.web.bind.annotation.RequestBody;
-import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.RestController;
+import org.springframework.web.bind.annotation.*;
 
 @RestController
 @RequestMapping("/employees")
@@ -21,6 +18,12 @@ public class EmployeeController {
     @PostMapping
     public ResponseEntity<Employee> create(@RequestBody Employee employee){
         return new ResponseEntity<>(service.create(employee), HttpStatus.CREATED);
+    }
+
+    //get by id
+    @GetMapping("/{id}")
+    public ResponseEntity<Employee> getById(@PathVariable String id){
+        return ResponseEntity.ok(service.getById(id));
     }
 
 }
