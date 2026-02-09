@@ -5,9 +5,7 @@ import com.example.employee.service.service.UserService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
-import org.springframework.web.bind.annotation.PostMapping;
-import org.springframework.web.bind.annotation.RequestBody;
-import org.springframework.web.bind.annotation.RestController;
+import org.springframework.web.bind.annotation.*;
 
 @RestController
 public class UserController {
@@ -21,5 +19,14 @@ public class UserController {
         return new ResponseEntity<>(saved, HttpStatus.CREATED);
 
     }
+
+    //Get by id
+    @GetMapping("/{id}")
+    public ResponseEntity<User> getUser(@PathVariable String id){
+        User user = service.getUserById(id);
+        return ResponseEntity.ok(user);
+    }
+
+
 
 }
