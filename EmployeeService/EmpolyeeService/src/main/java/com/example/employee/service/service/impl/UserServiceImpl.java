@@ -1,17 +1,23 @@
 package com.example.employee.service.service.impl;
 
+
 import com.example.employee.service.Entity.User;
 import com.example.employee.service.Repository.UserRepository;
 import com.example.employee.service.exceptionhandling.UserNotFoundException;
 import com.example.employee.service.service.UserService;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.http.ResponseEntity;
 import org.springframework.stereotype.Service;
 
 import java.util.List;
+import java.util.Map;
+
 @Service
 public class UserServiceImpl implements UserService {
     @Autowired
     private UserRepository repository;
+
+
 
     @Override
     public User createUser(User user) {
@@ -20,7 +26,9 @@ public class UserServiceImpl implements UserService {
 
     @Override
     public User getUserById(String id) {
-        return repository.findById(id).orElseThrow(()-> new UserNotFoundException("User not found with id " + id));
+        User user = repository.findById(id)
+                .orElseThrow(()-> new UserNotFoundException("User not found with id " + id));
+        return user;
     }
 
     @Override

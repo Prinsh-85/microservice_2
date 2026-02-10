@@ -1,27 +1,20 @@
-package com.example.employee.service.Entity;
+package com.example.user.service.entity;
 
-import jakarta.persistence.*;
+import jakarta.persistence.GeneratedValue;
+import jakarta.persistence.Id;
 import lombok.AllArgsConstructor;
 import lombok.Getter;
 import lombok.NoArgsConstructor;
 import lombok.Setter;
 
-import java.util.Map;
-
-@Entity
 @Getter
 @Setter
 @AllArgsConstructor
 @NoArgsConstructor
-@Table(name = "users")
 public class User {
     @Id
     @GeneratedValue
     private String id;
     private String name;
     private String email;
-
-    @Transient
-    private Map<String, Object> employee;
 }
-
